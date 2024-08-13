@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>BMS</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+    <link href="/public/css/style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.2/socket.io.js" integrity="sha512-VJ6+sp2E5rFQk05caiXXzQd1wBABpjEj1r5kMiLmGAAgwPItw1YpqsCCBtq8Yr1x6C49/mTpRdXtq8O2RcZhlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Caveat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+
+     body {
+            background-color: beige;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            text-align: center; /* Center align post titles */
+        }
+       .fs-5 , .oja{
+            font-family: 'Caveat', cursive; /* Change font family for comments */
+            font-size: 1.5rem; /* Increase font size */
+        }
+
+        .q {
+            font-family: 'Caveat', cursive; /* Change font family for comments */
+            font-size: 1.5rem; /* Increase font size */
+        }
+
+        .btn.btn-primary {
+            background-color: transparent; /* Make background transparent */
+            color: black; /* Set text color to black */
+            font-weight: normal; /* Make text bold */
+            border: 1px solid black; /* Optional: Add a border to make the button visible */
+        } 
+        .btn.btn-info {
+            background-color: transparent; /* Make background transparent */
+            color: black; /* Set text color to black */
+            font-weight: normal; /* Make text bold */
+            border: 1px solid black; /* Optional: Add a border to make the button visible */
+        }
+        .card, .card-body, .form-control, .btn-info, .do-reply , .col-md-12, .d-flex, .ms-3 {
+            background-color: transparent !important; /* Make all divs and form elements transparent */
+        }
+
+      
+        .fw-bold {
+            font-family: 'Spectral', serif; /* Change font family for usernames */
+            font-weight: bold; /* Make username bold */
+        }
+
+        .comment-content {
+            font-family: 'Indie Flower', cursive; /* Change font family for comments */
+            font-weight: normal; /* Make comments non-bold */
+        }
+ 
+   
+    .custom-img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 500px; /* Adjust this value as needed */
+    }
+    .fuck{
+  background-image: url('https://img.freepik.com/free-photo/overhead-view-coffee-cup-keyboard-camera-paper-white-background_23-2148042112.jpg?w=996&t=st=1717428493~exp=1717429093~hmac=21989a2da6d41249bbbfb24efc8b4bcb9e35510bcc3e73421e7b2fa774482b44');
+}
+</style>
+  </head>
+  <body class="fuck">
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container px-5">
+          <a class="navbar-brand" href="#!">BMS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                  <li class="nav-item about"><a class="nav-link" href="/about">About</a></li>
+                  <li class="nav-item contact"><a class="nav-link" href="/contact">Contact</a></li>
+                  <li class="nav-item logout"><a class="nav-link" href="/user-logout">Logout</a></li>
+                  <li class="nav-item login"><a class="nav-link" href="/login">Login</a></li>
+                  <li class="nav-item login"><a class="nav-link" href="/register">Register</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+  <script>
+    function getCookie(name) {
+      let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+      ));
+      return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    var userData = null;
+    var userId = null;
+    if(getCookie('user') === undefined){
+      document.getElementsByClassName('logout')[0].style.display = 'none';
+      document.getElementsByClassName('login')[0].style.display = 'block';
+      document.getElementsByClassName('login')[1].style.display = 'block';
+    }
+    else{
+      userData = JSON.parse(getCookie('user'));
+      userId = userData._id;
+      document.getElementsByClassName('logout')[0].style.display = 'block';
+      document.getElementsByClassName('login')[0].style.display = 'none';
+      document.getElementsByClassName('login')[1].style.display = 'none';
+    }
+    console.log(userId)
+  </script>
